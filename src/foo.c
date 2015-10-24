@@ -1,6 +1,7 @@
 #include "foo.h"
 
 #include <stddef.h>
+#include <stdbool.h>
 #include <string.h>
 
 bool

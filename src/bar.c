@@ -1,6 +1,7 @@
 #include "bar.h"
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <stddef.h>
 #include "foo.h"
 
@@ -41,6 +42,7 @@ const char *
 barFind(int size, Bar * tree)
 {
     Bar ** bar  = findBar(size, tree);
+    if (*bar == NULL) return "";
     return (*bar)->secret;
 }
 
@@ -48,8 +50,9 @@ static Bar **
 findBar(int size, Bar * tree)
 {
     Bar ** visit = &tree;
-    while (visit != NULL)
+    while (*visit != NULL)
     {
+
         int visitSize = getSize(*visit);
         if (size == visitSize) return visit;
         if (size > visitSize) visit = &(*visit)->next;
@@ -61,5 +64,7 @@ findBar(int size, Bar * tree)
 static int
 getSize(Bar * bar)
 {
-    return fooAdd(bar->x, bar->y, bar->z);
+    int result;
+    fooAdd(bar->x, bar->y, bar->z, &result);
+    return result;
 }
