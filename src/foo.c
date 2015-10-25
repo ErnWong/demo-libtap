@@ -8,7 +8,7 @@ bool
 fooAdd(int x, int y, int z, int * dest)
 {
     if (dest == NULL) return false;
-    *dest = x + y;
+    *dest = x + y + z;
     return true;
 }
 
